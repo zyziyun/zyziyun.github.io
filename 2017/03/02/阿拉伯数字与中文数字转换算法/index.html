@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="读书笔记," />
 
 
 
@@ -87,15 +87,28 @@
 
 
 
-<meta name="description" content="do!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ziyun">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="《算法的乐趣》- 王晓华
+读书笔记，原文用C语言实现算法
+现在改用JavaScript实现算法
+
+阿拉伯数字转换中文表示12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273//">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿拉伯数字与中文数字转换算法">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/阿拉伯数字与中文数字转换算法/index.html">
 <meta property="og:site_name" content="ziyun">
-<meta property="og:description" content="do!">
+<meta property="og:description" content="《算法的乐趣》- 王晓华
+读书笔记，原文用C语言实现算法
+现在改用JavaScript实现算法
+
+阿拉伯数字转换中文表示12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273//">
+<meta property="og:updated_time" content="2017-03-02T13:51:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ziyun">
-<meta name="twitter:description" content="do!">
+<meta name="twitter:title" content="阿拉伯数字与中文数字转换算法">
+<meta name="twitter:description" content="《算法的乐趣》- 王晓华
+读书笔记，原文用C语言实现算法
+现在改用JavaScript实现算法
+
+阿拉伯数字转换中文表示12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273//">
 
 
 
@@ -123,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/02/阿拉伯数字与中文数字转换算法/"/>
 
 
 
 
 
-  <title> ziyun </title>
+  <title> 阿拉伯数字与中文数字转换算法 | ziyun </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,9 +167,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,9 +260,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -281,10 +292,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/02/阿拉伯数字与中文数字转换算法/" itemprop="url">
-                  阿拉伯数字与中文数字转换算法
-                </a>
+                阿拉伯数字与中文数字转换算法
               
             
           </h1>
@@ -357,435 +365,72 @@
       
 
       
-        
-          
-            <ul>
+        <ul>
 <li>《算法的乐趣》- 王晓华</li>
 <li>读书笔记，原文用C语言实现算法</li>
 <li>现在改用JavaScript实现算法</li>
 </ul>
 <h1 id="阿拉伯数字转换中文表示"><a href="#阿拉伯数字转换中文表示" class="headerlink" title="阿拉伯数字转换中文表示"></a>阿拉伯数字转换中文表示</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 单个数字转换：数组下标定义中文数字表</span></div><div class="line"><span class="keyword">var</span> chnNumChar = [<span class="string">'零'</span>, <span class="string">'一'</span>, <span class="string">'二'</span>, <span class="string">'三'</span>, <span class="string">'四'</span>, <span class="string">'五'</span>, <span class="string">'六'</span>, <span class="string">'七'</span>, <span class="string">'八'</span>, <span class="string">'九'</span>];</div><div class="line"><span class="comment">// 节与权位识别。节：以万为单位截断。一维表</span></div><div class="line"><span class="comment">// 32位正数能表达的最大数，节权是万亿已经够了。最低的节没有节权，使用空字符串做占位符（算法设计的一致性处理技巧）</span></div><div class="line"><span class="keyword">var</span> chnUnitSection = [<span class="string">''</span>, <span class="string">'万'</span>, <span class="string">'亿'</span>, <span class="string">'万亿'</span>];</div><div class="line"><span class="comment">// 每个节内数字的权位</span></div><div class="line"><span class="comment">// 通过移位可以确定每个数字对应的权位；以移位次数做下标，查节权表即可</span></div><div class="line"><span class="keyword">var</span> chnUnitChar = [<span class="string">''</span>, <span class="string">'十'</span>, <span class="string">'百'</span>, <span class="string">'千'</span>];</div><div class="line"><span class="comment">// 算法设计：先对阿拉伯数字分节，确定节权位名称</span></div><div class="line"><span class="comment">// var chnStr = 1000;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumberToChinese</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="comment">// 输出字符串</span></div><div class="line">    <span class="keyword">var</span> chnStr = <span class="string">''</span>;</div><div class="line">    <span class="comment">// 记录节的位置：0代表“”，1代表万，2代表亿</span></div><div class="line">    <span class="keyword">var</span> unitPos = <span class="number">0</span>;</div><div class="line">    <span class="comment">// 中转状态</span></div><div class="line">    <span class="keyword">var</span> strIns = <span class="string">''</span>;</div><div class="line">    <span class="comment">// 是否需要补0</span></div><div class="line">    <span class="keyword">var</span> needZero = <span class="literal">false</span>;</div><div class="line">    <span class="comment">// 移位循环 每节取余10000</span></div><div class="line">    <span class="keyword">while</span>(num &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">var</span> section = num % <span class="number">10000</span>;</div><div class="line">        <span class="keyword">if</span> (needZero) &#123;</div><div class="line">            chnStr = chnNumChar[<span class="number">0</span>] + chnStr;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 每小结转换中文</span></div><div class="line">        strIns = SectionToChinese(section);</div><div class="line">        <span class="comment">// 是否需要节权位</span></div><div class="line">        strIns += (section != <span class="number">0</span>) ? chnUnitSection[unitPos] : chnUnitSection[<span class="number">0</span>];</div><div class="line">        chnStr = strIns + chnStr;</div><div class="line">        <span class="comment">// 千位是0，需要下一个section补0</span></div><div class="line">        needZero = (section &lt; <span class="number">1000</span>)  &amp;&amp; (section &gt; <span class="number">0</span>);</div><div class="line">        num = <span class="built_in">parseInt</span>(num / <span class="number">10000</span>);</div><div class="line">        unitPos++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> chnStr;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 将一个节的数字转换成中文数字</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SectionToChinese</span> (<span class="params">section</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> chnStr = <span class="string">''</span>;</div><div class="line">    <span class="keyword">var</span> strIns = <span class="string">''</span>;</div><div class="line">    <span class="keyword">var</span> unitPos = <span class="number">0</span>;</div><div class="line">    <span class="comment">// 确保连续多个，只补一个中文0</span></div><div class="line">    <span class="keyword">var</span> zero = <span class="literal">true</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (section &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">var</span> v = section % <span class="number">10</span>;</div><div class="line">        <span class="keyword">if</span> (v === <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">if</span> ((section === <span class="number">0</span>) || !zero) &#123;</div><div class="line">                zero = <span class="literal">true</span>;</div><div class="line">                chnStr =  chnNumChar[v] + chnStr;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 至少有一个数字不是</span></div><div class="line">            zero = <span class="literal">false</span>;</div><div class="line">            <span class="comment">// 此位对应的中文数字</span></div><div class="line">            strIns = chnNumChar[v];</div><div class="line">            <span class="comment">// 此位对应的中文权位</span></div><div class="line">            strIns += chnUnitChar[unitPos];</div><div class="line">            chnStr = strIns + chnStr;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 移位</span></div><div class="line">        unitPos++;</div><div class="line">        section = <span class="built_in">parseInt</span>(section / <span class="number">10</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> chnStr;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.querySelector(<span class="string">'body'</span>);</div><div class="line"><span class="keyword">var</span> num = <span class="number">10010441</span>;</div><div class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(num + <span class="string">' =&gt; '</span>+ NumberToChinese(num));</div><div class="line"><span class="comment">// 输出 “10010441 =&gt; 一千零一万零四百四十一”</span></div><div class="line">body.appendChild(text);</div></pre></td></tr></table></figure>
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/flexbox的基本使用及流布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zi Yun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/photo.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ziyun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/02/flexbox的基本使用及流布局/" itemprop="url">
-                  flexbox的基本使用及流布局
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T20:51:15+08:00">
-                2017-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><ul>
-<li>display: flex | inline-flex; (适用于父类容器元素上)</li>
-</ul>
-<h2 id="父类元素属性"><a href="#父类元素属性" class="headerlink" title="父类元素属性"></a>父类元素属性</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><ol>
-<li>flex-direction </li>
-<li>flex-wrap</li>
-<li>flex-flow</li>
-<li>flex-flow</li>
-<li>justify-content</li>
-<li>align-items</li>
-<li>align-content</li>
-</ol>
-<h3 id="详细"><a href="#详细" class="headerlink" title="详细"></a>详细</h3><ul>
-<li>flex-direction (适用于父类容器的元素上)</li>
-<li>flex-direction: row | row-reverse | column | column-reverse</li>
-<li>flex-wrap (适用于父类容器上)</li>
-<li>flex-wrap: nowrap | wrap | wrap-reverse</li>
-<li>flex-flow (适用于父类容器上)复合属性。</li>
-<li>flex-flow: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;</li>
-<li>justify-content (适用于父类容器上)</li>
-<li>justify-content: flex-start | flex-end | center | space-between | space-around</li>
-<li>设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式</li>
-<li>align-items (适用于父类容器上)</li>
-<li>align-items: flex-start | flex-end | center | baseline | stretch</li>
-<li>设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式。</li>
-<li>align-content (适用于父类容器上)</li>
-<li>align-content: flex-start | flex-end | center | space-between | space-around | stretch</li>
-<li>设置或检索弹性盒堆叠伸缩行的对齐方式。</li>
-</ul>
-<h2 id="子类元素属性"><a href="#子类元素属性" class="headerlink" title="子类元素属性"></a>子类元素属性</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ol>
-<li>order - 排序</li>
-<li>flex-grow</li>
-<li>flex-shrink</li>
-<li>flex-basis</li>
-<li>flex</li>
-<li>align-self</li>
-</ol>
-<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><ul>
-<li>order (适用于弹性盒模型容器子元素)</li>
-<li>order: &lt;integer&gt;数值小的排在前面。可以为负值。</li>
-<li>flex-grow (适用于弹性盒模型容器子元素)</li>
-<li>设置或检索弹性盒的扩展比率。</li>
-<li>flex-grow: &lt;number&gt; (default 0)</li>
-<li>flex-shrink (适用于弹性盒模型容器子元素)</li>
-<li>设置或检索弹性盒的收缩比率（根据弹性盒子元素所设置的收缩因子作为比率来收缩空间。）</li>
-<li>flex-shrink: &lt;number&gt; (default 1)</li>
-<li>flex-basis (适用于弹性盒模型容器子元素)</li>
-<li>设置或检索弹性盒伸缩基准值。</li>
-<li>flex-basis: &lt;length&gt; | auto (default auto)</li>
-<li>flex (适用于弹性盒模型子元素)</li>
-<li>复合属性。设置或检索伸缩盒对象的子元素如何分配空间。如果缩写flex:1, 则其计算值为：1 1 0</li>
-<li>flex：none | [ flex-grow ] || [ flex-shrink ] || [ flex-basis ]</li>
-<li>align-self (适用于弹性盒模型子元素)</li>
-<li>设置或检索弹性盒子元素自身在侧轴（纵轴）方向上的对齐方式。</li>
-<li>align-self: auto | flex-start | flex-end | center | baseline | stretch</li>
-</ul>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/webpack踩坑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zi Yun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/photo.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ziyun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/02/flexbox的基本使用及流布局/" rel="next" title="flexbox的基本使用及流布局">
+                <i class="fa fa-chevron-left"></i> flexbox的基本使用及流布局
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/03/02/webpack踩坑/" itemprop="url">
-                  webpack踩坑
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T17:36:26+08:00">
-                2017-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="运行效率"><a href="#运行效率" class="headerlink" title="运行效率"></a>运行效率</h2><ul>
-<li>如果项目是多入口配置，在本地开发阶段不需要每次都跑全部的</li>
-<li>可以获取到运行命令行参数决定，跑哪些页面，加快速度</li>
-<li>process.env.npm_config_argv或者使用yargs这个npm包获取命令行传入的参数<img src="/2017/03/02/webpack踩坑/1.jpeg" alt="1.jpeg" title=""></li>
-<li>process.env.npm_config_argv：在使用yarn run xxx的时候不能获取到参数，在使用npm run xxx的时候可以获取到</li>
-<li>yargs这个包是都可以获取到的</li>
-</ul>
-<h2 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h2><ul>
-<li>问题描述：在上线和测试环境下代码发到cdn上，静态资源和页面地址不在一处，需要配置不同的前缀地址，才能引入线上script</li>
-<li>通过<strong>output -&gt; publicPath</strong> 根据不同的环境变量变更path路径，解决加载问题</li>
-</ul>
-<h2 id="htmlPlugin"><a href="#htmlPlugin" class="headerlink" title="htmlPlugin"></a>htmlPlugin</h2><h3 id="普通配置"><a href="#普通配置" class="headerlink" title="普通配置"></a>普通配置</h3><img src="/2017/03/02/webpack踩坑/6.jpeg" alt="6.jpeg" title="">
-<ul>
-<li>把html 连接到webpack的plugin属性上（concat）一个配置只能针对一个文件</li>
-<li>data的内容，可以在template里获取到然后做相应的改动</li>
-<li>filename：输出html的名称，可以带路径</li>
-<li>template: 模板名称及使用什么编译器 ejs-compiled可以使用ejs语法</li>
-<li>inject：是否把所有静态资源自动添加到html里，这里不使用，目前的模板配置是直接引入了入口的文件，后面在回调里添加hash实现，下图是模板文件：<img src="/2017/03/02/webpack踩坑/2.jpeg" alt="2.jpeg" title=""></li>
-<li>可以使用ejs的语法</li>
-<li>minify：压缩模板配置<ul>
-<li>removeComments：删除注释</li>
-<li>collapseWhitespace：删除多余的空格</li>
-<li>preserveLineBreaks：保留每个标签tag的换行符</li>
-<li>collapseInlineTagWhitespace：不保留行内元素两边的空格</li>
-<li>collapseBooleanAttributes：使input的一些的布尔值的属性合并，不写等于了，例如：disabled</li>
-<li>removeRedundantAttributes：删除多余的标签，例如没有赋值的style，class等</li>
-<li>useShortDoctype：替换成较短的html5 doctype</li>
-<li>caseSensitive：区分大小写的方式处理自定义标签</li>
-<li>minifyJS：行内scripts标签，或者attribute里的是否压缩</li>
-<li>minifyCSS：行内style标签，或者attribute里的是否压缩</li>
-<li>quoteCharacter：对于attribute用什么符号<h3 id="plugin完成后的一些操作"><a href="#plugin完成后的一些操作" class="headerlink" title="plugin完成后的一些操作"></a>plugin完成后的一些操作</h3><img src="/2017/03/02/webpack踩坑/5.jpeg" alt="5.jpeg" title=""></li>
-</ul>
-</li>
-<li>plugin执行完后执行替换html的js引用，增加对应的hash值，stats.hash</li>
-<li>获取到数据流后通过正则匹配，替换<h3 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h3><a href="http://perfectionkills.com/experimenting-with-html-minifier/#collapse_whitespace" target="_blank" rel="external">http://perfectionkills.com/experimenting-with-html-minifier/#collapse_whitespace</a><br><a href="http://perfectionkills.com/experimenting-with-html-minifier/#remove_comments" target="_blank" rel="external">http://perfectionkills.com/experimenting-with-html-minifier/#remove_comments</a><br><a href="http://perfectionkills.com/experimenting-with-html-minifier/#collapse_boolean_attributes" target="_blank" rel="external">http://perfectionkills.com/experimenting-with-html-minifier/#collapse_boolean_attributes</a><br><a href="http://perfectionkills.com/experimenting-with-html-minifier/#use_short_doctype" target="_blank" rel="external">http://perfectionkills.com/experimenting-with-html-minifier/#use_short_doctype</a><br><a href="https://github.com/kangax/html-minifier#options-quick-reference" target="_blank" rel="external">https://github.com/kangax/html-minifier#options-quick-reference</a><br><a href="https://github.com/jantimon/html-webpack-plugin" target="_blank" rel="external">https://github.com/jantimon/html-webpack-plugin</a></li>
-</ul>
-<h2 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h2><p>设置import相对路径，不过最后引用的时候用<strong>~</strong>开头，node_modules里的scss引用可以直接相对”~”引用<br><img src="/2017/03/02/webpack踩坑/3.jpeg" alt="3.jpeg" title=""><br><a href="https://github.com/webpack-contrib/sass-loader#imports" target="_blank" rel="external">https://github.com/webpack-contrib/sass-loader#imports</a></p>
-<h2 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h2><img src="/2017/03/02/webpack踩坑/4.jpeg" alt="4.jpeg" title="">
-<ul>
-<li>extensions：扩展名</li>
-<li>fallback：</li>
-<li>alias：别名，具体定义一个别名的路径，方便引入modules<img src="/2017/03/02/webpack踩坑/7.jpeg" alt="7.jpeg" title="">
-webpack2把root，fallback迁移到了modules的配置里，告诉webpack解析的搜索路径<br>Explicit is better than implicit<br>alias清晰的比modules的好，效率？？</li>
-</ul>
-<h2 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h2><ul>
-<li>背景：本地开发嵌套iframe的页面的时候，两个项目的端口号不统一，导致iframe同源策略不允许互相操作跳转</li>
-<li>解决：配置到同一端口号的域名上。“devServer.proxy”<img src="/2017/03/02/webpack踩坑/8.jpeg" alt="8.jpeg" title="">
-</li>
-</ul>
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
-<li>路径是否正确，publicPath，path，如果是相对路径相对哪里，最好配置成path.resolve(__dirname, xxx)的形式</li>
-<li>如果用的别人配置好的多文件的配置，检查loader是否有重复的，可能出现多个loader配置重复的问题，等于是模块解析了2次，会报错</li>
-<li>拆分模块的情况下，一定要配置publicPath，确定异步加载的模块地址</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -793,6 +438,10 @@ webpack2把root，fallback迁移到了modules的配置里，告诉webpack解析�
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -812,8 +461,17 @@ webpack2把root，fallback迁移到了modules的配置里，告诉webpack解析�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/photo.jpeg"
@@ -871,6 +529,22 @@ webpack2把root，fallback迁移到了modules的配置里，告诉webpack解析�
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阿拉伯数字转换中文表示"><span class="nav-number">1.</span> <span class="nav-text">阿拉伯数字转换中文表示</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -983,6 +657,10 @@ webpack2把root，fallback迁移到了modules的配置里，告诉webpack解析�
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
