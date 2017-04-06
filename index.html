@@ -270,6 +270,537 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/数据结构-字典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zi Yun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/photo.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ziyun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/06/数据结构-字典/" itemprop="url">
+                  数据结构-字典
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T15:25:30+08:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法JavaScript描述/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法JavaScript描述</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/06/数据结构-字典/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/06/数据结构-字典/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="chapter-7-字典"><a href="#chapter-7-字典" class="headerlink" title="chapter-7 字典"></a>chapter-7 字典</h2><ul>
+<li>键值对形式存储数据的数据结构</li>
+<li>JavaScript的Object类就是以字典的形式设计的</li>
+<li>基础是Array类，可以对字典的键排序，JavaScript中是不能对对象的属性进行排序的。</li>
+<li>JavaScript中一切皆对象，数组也是对象。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 字典实现</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dictionary</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.datastore = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line">&#125;</div><div class="line">Dictionary.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: Dictionary,</div><div class="line">    <span class="comment">// 添加</span></div><div class="line">    add: <span class="function"><span class="keyword">function</span> (<span class="params">key, value</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.datastore[key] = value;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 查找</span></div><div class="line">    find: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.datastore[key];</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 删除</span></div><div class="line">    remove: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</div><div class="line">        <span class="keyword">delete</span> <span class="keyword">this</span>.datastore[key];</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 显示字典中所有的键值对</span></div><div class="line">    showAll: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 对键名进行重排序</span></div><div class="line">        <span class="keyword">var</span> arr = <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.datastore).sort();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">            <span class="keyword">var</span> key = arr[i];</div><div class="line">            <span class="built_in">console</span>.log(key + <span class="string">' -&gt; '</span> + <span class="keyword">this</span>.datastore[key])</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 字典元素个数</span></div><div class="line">    count: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 当数组的键的类型为字符串的时候，length属性就不管用了</span></div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.datastore).length;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 清除</span></div><div class="line">    clear: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> <span class="keyword">this</span>.datastore) &#123;</div><div class="line">            <span class="keyword">delete</span> <span class="keyword">this</span>.datastore[key];</div><div class="line">        &#125;  </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 主程序</span></div><div class="line"><span class="keyword">var</span> pbook = <span class="keyword">new</span> Dictionary();</div><div class="line"><span class="comment">// pbook.add('Mike', '123');</span></div><div class="line"><span class="comment">// pbook.add('David', '345');</span></div><div class="line"><span class="comment">// pbook.add('Cynthia', '456');</span></div><div class="line"><span class="comment">// console.log(pbook.find('David'));</span></div><div class="line"><span class="comment">// pbook.remove('David');</span></div><div class="line"><span class="comment">// pbook.showAll();</span></div><div class="line"><span class="comment">// console.log(pbook.count());</span></div><div class="line"><span class="comment">// pbook.clear();</span></div><div class="line"><span class="comment">// console.log(pbook.count());</span></div><div class="line"><span class="comment">// debugger</span></div><div class="line">pbook.add(<span class="string">'Raymond'</span>, <span class="string">'123'</span>);</div><div class="line">pbook.add(<span class="string">'David'</span>, <span class="string">'345'</span>);</div><div class="line">pbook.add(<span class="string">'Cynthia'</span>, <span class="string">'456'</span>);</div><div class="line">pbook.add(<span class="string">'Mike'</span>, <span class="string">'723'</span>);</div><div class="line">pbook.add(<span class="string">'Jennifer'</span>, <span class="string">'987'</span>);</div><div class="line">pbook.add(<span class="string">'Danny'</span>, <span class="string">'012'</span>);</div><div class="line">pbook.add(<span class="string">'Jonathan'</span>, <span class="string">'666'</span>);</div><div class="line">pbook.showAll();</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/数据结构-链表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zi Yun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/photo.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ziyun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/06/数据结构-链表/" itemprop="url">
+                  数据结构-链表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T15:25:17+08:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法JavaScript描述/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法JavaScript描述</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/06/数据结构-链表/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/06/数据结构-链表/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="chapter-6-链表"><a href="#chapter-6-链表" class="headerlink" title="chapter-6 链表"></a>chapter-6 链表</h2><h3 id="数组的缺点"><a href="#数组的缺点" class="headerlink" title="数组的缺点"></a>数组的缺点</h3><ul>
+<li>很多语言里，数组的长度固定。填满后，加入新元素很困难。</li>
+<li>添加、删除元素也很麻烦，因为需要将数组中其他元素向前或向后平移，以反映刚刚进行了添加或删除操作。</li>
+<li>JavaScript数组不存在上述问题，split方法不需要再访问数组中其他元素了，主要问题是：它们被实现成了对象，与其他语言相比，效率很低。</li>
+<li>如果数组使用中很慢，可以考虑用链表代替它，除了对数据的随机访问，链表几乎可以用在任何可以使用一维数组的情况。需要随机访问，数组是更好的选择。</li>
+</ul>
+<h3 id="定义链表"><a href="#定义链表" class="headerlink" title="定义链表"></a>定义链表</h3><ul>
+<li>一组节点组成的集合。</li>
+<li>每个节点使用一个对象的引用指向它的后继。指向另一个节点的引用叫做链。</li>
+<li>数组靠位置进行引用，链表靠相互之间的关系进行引用。</li>
+<li>遍历链表是跟着链接，从首元素走到尾元素（不包含头节点，作为链表的接入点），尾元素指向一个null节点。</li>
+<li>头节点是一个特殊固定节点。</li>
+<li>插入一个节点的效率很高，修改它前面的节点（前驱），使其指向新加入的节点，新加入的节点则指向原来前驱指向的节点。</li>
+<li>删除一个节点，将待删除元素的前驱节点指向待删除元素的后继节点，同时将待删除元素指向null</li>
+</ul>
+<h3 id="设计一个基于对象的链表"><a href="#设计一个基于对象的链表" class="headerlink" title="设计一个基于对象的链表"></a>设计一个基于对象的链表</h3><ul>
+<li>包含两个类：Node类用来表示节点，LinkedList类提供插入、删除、显示列表元素、及一些辅助方法。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 节点类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span> (<span class="params">element</span>) </span>&#123;</div><div class="line">    <span class="comment">// 保存节点上的数据</span></div><div class="line">    <span class="keyword">this</span>.element = element;</div><div class="line">    <span class="comment">// 保存指向下一个节点的链接</span></div><div class="line">    <span class="keyword">this</span>.next = <span class="literal">null</span>; </div><div class="line">&#125;</div><div class="line"><span class="comment">// 提供对链表进行操作的方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LList</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 属性：使用一个Node对象保存该链表的头节点</span></div><div class="line">    <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(<span class="string">'head'</span>);</div><div class="line">&#125;</div><div class="line">LList.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: LList,</div><div class="line">    <span class="comment">// 查找给定的节点</span></div><div class="line">    find: <span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.element !== item) &#123;</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> currNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 查找给定的节点前面的节点</span></div><div class="line">    findPrevious (item) &#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.next !== <span class="literal">null</span> &amp;&amp; currNode.next.element !== item) &#123;</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> currNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 指定节点后插入节点</span></div><div class="line">    insert: <span class="function"><span class="keyword">function</span> (<span class="params">newElement, item</span>) </span>&#123;</div><div class="line">        <span class="comment">// 创建新节点</span></div><div class="line">        <span class="keyword">var</span> newNode = <span class="keyword">new</span> Node(newElement);</div><div class="line">        <span class="comment">// 查找需要插入的位置</span></div><div class="line">        <span class="keyword">var</span> current = <span class="keyword">this</span>.find(item);</div><div class="line">        <span class="comment">// 新节点指向current的下一个节点</span></div><div class="line">        newNode.next = current.next;</div><div class="line">        <span class="comment">// current节点的下一个节点指向新节点</span></div><div class="line">        current.next = newNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 删除节点</span></div><div class="line">    remove: <span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="comment">// 找到待删除节点前面的节点</span></div><div class="line">        <span class="keyword">var</span> prevNode = <span class="keyword">this</span>.findPrevious(item);</div><div class="line">        <span class="keyword">if</span> (prevNode.next !== <span class="literal">null</span>) &#123;</div><div class="line">            prevNode.next = prevNode.next.next;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 显示列表中元素</span></div><div class="line">    display: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 从头节点开始循环，不显示头节点</span></div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.next !== <span class="literal">null</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(currNode.next.element);</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 主程序</span></div><div class="line"><span class="keyword">var</span> cities = <span class="keyword">new</span> LList();</div><div class="line">cities.insert(<span class="string">'Conway'</span>, <span class="string">'head'</span>);</div><div class="line">cities.insert(<span class="string">'Russellville'</span>, <span class="string">'Conway'</span>);</div><div class="line">cities.insert(<span class="string">'Carlisle'</span>, <span class="string">'Russellville'</span>);</div><div class="line">cities.insert(<span class="string">'Alma'</span>, <span class="string">'Carlisle'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'链表整体数据：============'</span>);</div><div class="line">cities.display();</div><div class="line">cities.remove(<span class="string">'Russellville'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'删除数据Russellville后数据：============'</span>);</div><div class="line">cities.display();</div></pre></td></tr></table></figure>
+<img src="/2017/04/06/数据结构-链表/1.jpeg" alt="1.jpeg" title="">
+<h3 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h3><ul>
+<li>从链表的头节点遍历到尾节点很简单，但是反过来，从后向前遍历则没那么简单。给Node增加一个属性，存储指向前驱节点的链接。</li>
+<li>插入时，需要更多的工作，指出节点正确的前驱和后继。</li>
+<li>删除时，效率提高了，不需要再查找待删除节点的前驱节点了。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 双向链表实现</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// 节点类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span> (<span class="params">element</span>) </span>&#123;</div><div class="line">    <span class="comment">// 保存节点上的数据</span></div><div class="line">    <span class="keyword">this</span>.element = element;</div><div class="line">    <span class="comment">// 保存指向下一个节点的链接</span></div><div class="line">    <span class="keyword">this</span>.next = <span class="literal">null</span>; </div><div class="line">    <span class="comment">// 保存前驱节点指向</span></div><div class="line">    <span class="keyword">this</span>.previous = <span class="literal">null</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 提供对链表进行操作的方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LList</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 属性：使用一个Node对象保存该链表的头节点</span></div><div class="line">    <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(<span class="string">'head'</span>);</div><div class="line">&#125;</div><div class="line">LList.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: LList,</div><div class="line">    <span class="comment">// 查找给定的节点</span></div><div class="line">    find: <span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.element !== item) &#123;</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> currNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 查找最后的节点</span></div><div class="line">    findLast () &#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.next !== <span class="literal">null</span>) &#123;</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> currNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 指定节点后插入节点</span></div><div class="line">    insert: <span class="function"><span class="keyword">function</span> (<span class="params">newElement, item</span>) </span>&#123;</div><div class="line">        <span class="comment">// 创建新节点</span></div><div class="line">        <span class="keyword">var</span> newNode = <span class="keyword">new</span> Node(newElement);</div><div class="line">        <span class="comment">// 查找需要插入的位置</span></div><div class="line">        <span class="keyword">var</span> current = <span class="keyword">this</span>.find(item);</div><div class="line">        <span class="comment">// 新节点指向current的下一个节点</span></div><div class="line">        newNode.next = current.next;</div><div class="line">        <span class="comment">// 新节点的前驱属性</span></div><div class="line">        newNode.previous = current;</div><div class="line">        <span class="comment">// current节点的下一个节点指向新节点</span></div><div class="line">        current.next = newNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 删除节点</span></div><div class="line">    remove: <span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.find(item);</div><div class="line">        <span class="keyword">if</span> (currNode.next !== <span class="literal">null</span>) &#123;</div><div class="line">            currNode.previous.next = currNode.next;</div><div class="line">            currNode.next.previous = currNode.previous;</div><div class="line">            currNode.next = <span class="literal">null</span>;</div><div class="line">            currNode.previous = <span class="literal">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 显示列表中元素</span></div><div class="line">    display: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 从头节点开始循环，不显示头节点</span></div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.next !== <span class="literal">null</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(currNode.next.element);</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 反序显示双向链表中的元素</span></div><div class="line">    dispReverse: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        currNode = <span class="keyword">this</span>.findLast();</div><div class="line">        <span class="keyword">while</span> (currNode.previous !== <span class="literal">null</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(currNode.element);</div><div class="line">            currNode = currNode.previous;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 主程序</span></div><div class="line"><span class="keyword">var</span> cities = <span class="keyword">new</span> LList();</div><div class="line">cities.insert(<span class="string">'Conway'</span>, <span class="string">'head'</span>);</div><div class="line">cities.insert(<span class="string">'Russellville'</span>, <span class="string">'Conway'</span>);</div><div class="line">cities.insert(<span class="string">'Carlisle'</span>, <span class="string">'Russellville'</span>);</div><div class="line">cities.insert(<span class="string">'Alma'</span>, <span class="string">'Carlisle'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'链表整体数据：============'</span>);</div><div class="line">cities.display();</div><div class="line">cities.remove(<span class="string">'Russellville'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'删除数据Russellville后数据：============'</span>);</div><div class="line">cities.display();</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'反转展示数据：============'</span>);</div><div class="line">cities.dispReverse();</div></pre></td></tr></table></figure>
+<p><strong>计算了一下时间：</strong></p>
+<ul>
+<li>插入10000个Node的时间<ul>
+<li>普通链表和双向链表差不多，普通链表240ms，双向链表250ms</li>
+</ul>
+</li>
+<li>依次删除这全部10000个节点<ul>
+<li>普通链表在150ms左右</li>
+<li>双向链表时间则较长，需要230ms左右</li>
+</ul>
+</li>
+<li>随机删除一个元素（Math.random()）<ul>
+<li>普通链表平均：0.283ms</li>
+<li>双向链表平均：0.196ms</li>
+</ul>
+</li>
+</ul>
+<p><code>所以书上写的双向链表更高效应该是指随机删除任意一个元素的平均时间</code></p>
+<h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><ul>
+<li>节点类型和单向链表类似，区别是，创建循环链表时，让其头节点的next属性指向它本身。</li>
+<li>希望可以从后向前遍历链表，但是又不想付出额外代价来创建一个双向链表，就需要使用循环链表。</li>
+<li>从循环链表的尾节点向后移动，就等于从后向前遍历链表</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 循环链表实现</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// 节点类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span> (<span class="params">element</span>) </span>&#123;</div><div class="line">    <span class="comment">// 保存节点上的数据</span></div><div class="line">    <span class="keyword">this</span>.element = element;</div><div class="line">    <span class="comment">// 保存指向下一个节点的链接</span></div><div class="line">    <span class="keyword">this</span>.next = <span class="literal">null</span>; </div><div class="line">&#125;</div><div class="line"><span class="comment">// 提供对链表进行操作的方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LList</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 属性：使用一个Node对象保存该链表的头节点</span></div><div class="line">    <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(<span class="string">'head'</span>);</div><div class="line">    <span class="keyword">this</span>.head.next = <span class="keyword">this</span>.head;</div><div class="line">&#125;</div><div class="line">LList.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: LList,</div><div class="line">    <span class="comment">// 查找给定的节点</span></div><div class="line">    find: <span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.element !== item) &#123;</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> currNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 查找给定的节点前面的节点</span></div><div class="line">    findPrevious (item) &#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">while</span> (currNode.next !== <span class="literal">null</span> &amp;&amp; currNode.next.element !== <span class="string">'head'</span> &amp;&amp; currNode.next.element !== item) &#123;</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> currNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 指定节点后插入节点</span></div><div class="line">    insert: <span class="function"><span class="keyword">function</span> (<span class="params">newElement, item</span>) </span>&#123;</div><div class="line">        <span class="comment">// 创建新节点</span></div><div class="line">        <span class="keyword">var</span> newNode = <span class="keyword">new</span> Node(newElement);</div><div class="line">        <span class="comment">// 查找需要插入的位置</span></div><div class="line">        <span class="keyword">var</span> current = <span class="keyword">this</span>.find(item);</div><div class="line">        <span class="comment">// 新节点指向current的下一个节点</span></div><div class="line">        newNode.next = current.next;</div><div class="line">        <span class="comment">// current节点的下一个节点指向新节点</span></div><div class="line">        current.next = newNode;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 删除节点</span></div><div class="line">    remove: <span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="comment">// 找到待删除节点前面的节点</span></div><div class="line">        <span class="keyword">var</span> prevNode = <span class="keyword">this</span>.findPrevious(item);</div><div class="line">        <span class="keyword">if</span> (prevNode.next !== <span class="literal">null</span>) &#123;</div><div class="line">            prevNode.next = prevNode.next.next;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 显示列表中元素</span></div><div class="line">    display: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 从头节点开始循环，不显示头节点</span></div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="comment">// 检查头节点</span></div><div class="line">        <span class="keyword">while</span> (currNode.next !== <span class="literal">null</span> &amp;&amp; currNode.next.element !== <span class="string">'head'</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(currNode.next.element);</div><div class="line">            currNode = currNode.next;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 反序显示循环链表中的元素</span></div><div class="line">    dispReverse: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> currNode = <span class="keyword">this</span>.head;</div><div class="line">        <span class="keyword">var</span> prevNode = <span class="keyword">this</span>.findPrevious(currNode.element);</div><div class="line">        <span class="keyword">while</span> (prevNode.element !== currNode.element &amp;&amp; prevNode.element !== <span class="string">'head'</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(prevNode.element);</div><div class="line">            currNode = prevNode;</div><div class="line">            prevNode = <span class="keyword">this</span>.findPrevious(currNode.element);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cities = <span class="keyword">new</span> LList();</div><div class="line">cities.insert(<span class="string">'Conway'</span>, <span class="string">'head'</span>);</div><div class="line">cities.insert(<span class="string">'Russellville'</span>, <span class="string">'Conway'</span>);</div><div class="line">cities.insert(<span class="string">'Carlisle'</span>, <span class="string">'Russellville'</span>);</div><div class="line">cities.insert(<span class="string">'Alma'</span>, <span class="string">'Carlisle'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'链表整体数据：============'</span>);</div><div class="line">cities.display();</div><div class="line">cities.remove(<span class="string">'Russellville'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'删除数据Russellville后数据：============'</span>);</div><div class="line">cities.display();</div><div class="line"><span class="comment">// debugger</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'反转展示数据：============'</span>);</div><div class="line"><span class="built_in">console</span>.time();</div><div class="line">cities.dispReverse();</div><div class="line"><span class="built_in">console</span>.timeEnd();<span class="comment">// 1.213ms</span></div></pre></td></tr></table></figure>
+<p><code>一般正常情况所说的链表都是双向链表，比较快</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/数据结构-队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zi Yun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/photo.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ziyun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/06/数据结构-队列/" itemprop="url">
+                  数据结构-队列
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T15:18:58+08:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法JavaScript描述/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法JavaScript描述</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/06/数据结构-队列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/06/数据结构-队列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="chapter-5-队列"><a href="#chapter-5-队列" class="headerlink" title="chapter-5 队列"></a>chapter-5 队列</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>一种列表</li>
+<li>只能在队尾插入元素，队首删除元素</li>
+<li>存储按顺序排列的数据，先进先出（FIFO）</li>
+<li>用于提交操作系统执行的一系列进程</li>
+</ul>
+<h3 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h3><ul>
+<li>插入（入队）- 队尾插入新元素</li>
+<li>删除（出队）- 删除队头元素</li>
+<li>读取队头元素 - peek</li>
+<li>存储多少元素 - length</li>
+<li>清空所有元素 - clear</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Queue</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.dataStore = [];</div><div class="line">&#125;</div><div class="line">Queue.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: Queue,</div><div class="line">    <span class="comment">// 队列尾部添加一个元素</span></div><div class="line">    enqueue: <span class="function"><span class="keyword">function</span> (<span class="params">element</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.dataStore.push(element);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 删除队首元素</span></div><div class="line">    dequeue: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.shift();</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 读取队首元素</span></div><div class="line">    front: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="number">0</span>];</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 读取队尾元素</span></div><div class="line">    back: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.dataStore.length - <span class="number">1</span>];</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 显示队列内所有元素</span></div><div class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.dataStore;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 判断是否为空</span></div><div class="line">    empty: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.length === <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试结果：</p>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="方块舞的舞伴分配问题"><a href="#方块舞的舞伴分配问题" class="headerlink" title="方块舞的舞伴分配问题"></a>方块舞的舞伴分配问题</h4><h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><ul>
+<li>9个队列，每个对应1-9每个数字，所有队列保存在一个数组里，使用取余和除法操作决定个位和十位。先根据个位数值对其排序，在根据十位数字排序呢，结果即为排序好的数字<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 分配函数</div><div class="line"> * @param &#123;array[num]&#125; nums 排序数字数组</div><div class="line"> * @param &#123;array&#125; queues 队列数组，每一项代表分配的基数数字</div><div class="line"> * @param &#123;int&#125; n 进制 </div><div class="line"> * @param &#123;int&#125; digit 当前位数，1：个位、10：十</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">distribute</span> (<span class="params">nums, queues, n, digit</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (digit === <span class="number">1</span>) &#123;</div><div class="line">            queues[nums[i] % <span class="number">10</span>].enqueue(nums[i]);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            queues[<span class="built_in">Math</span>.floor(nums[i] / <span class="number">10</span>)].enqueue(nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;   </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 出队收集</div><div class="line"> * @param &#123;array&#125; queues 队列数组</div><div class="line"> * @param &#123;array&#125; nums 排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collect</span>(<span class="params">queues, nums</span>) </span>&#123;</div><div class="line">    <span class="comment">// debugger</span></div><div class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> digit = <span class="number">0</span>; digit &lt; <span class="number">10</span>; digit++) &#123;</div><div class="line">        <span class="keyword">while</span> (!queues[digit].empty()) &#123;</div><div class="line">            nums[i++] = queues[digit].dequeue();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 执行程序</span></div><div class="line"><span class="keyword">var</span> queues = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    queues[i] = <span class="keyword">new</span> Queue();</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> nums = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    nums[i] = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'原始数据：'</span> + nums);</div><div class="line"><span class="comment">// 个位分布排序</span></div><div class="line">distribute(nums, queues, <span class="number">10</span>, <span class="number">1</span>);</div><div class="line">collect(queues, nums);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'个位排序后数据：'</span> + nums);</div><div class="line"><span class="comment">// 十位分布排序</span></div><div class="line">distribute(nums, queues, <span class="number">10</span>, <span class="number">10</span>);</div><div class="line">collect(queues, nums);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'十位排序后数据：'</span> + nums);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="test-结果"><a href="#test-结果" class="headerlink" title="test 结果"></a>test 结果</h5>
+<h3 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h3><ul>
+<li>一般情况下，队列中删除的元素遵循先入先出的原则。</li>
+<li>可以实现一个按优先权重限制的队列，高优先级先出，同优先级按先入先出处理。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 存储队列元素</div><div class="line"> * @param &#123;*&#125; name </div><div class="line"> * @param &#123;int&#125; code 表示优先级</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Patient</span> (<span class="params">name, code</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.code = code;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 重新定义dequeue函数</span></div><div class="line"><span class="comment">// 顺序查找方法寻找优先级最高的元素（code越小，优先级越高）</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dequeue</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> entry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.dataStore.length;i++) &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.dataStore[i].code &lt; <span class="keyword">this</span>.dataStore[entry].code) &#123;</div><div class="line">            entry = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.splice(entry, <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Queue.prototype.dequeue = dequeue;</div><div class="line"><span class="comment">// 主程序</span></div><div class="line"><span class="keyword">var</span> ed = <span class="keyword">new</span> Queue();</div><div class="line"><span class="comment">// 数据</span></div><div class="line"><span class="keyword">var</span> data = [</div><div class="line">    [<span class="string">'Smith'</span>, <span class="number">5</span>],</div><div class="line">    [<span class="string">'Jones'</span>, <span class="number">4</span>],</div><div class="line">    [<span class="string">'Fehrenbach'</span>, <span class="number">6</span>],</div><div class="line">    [<span class="string">'Brown'</span>, <span class="number">1</span>],</div><div class="line">    [<span class="string">'Ingram'</span>, <span class="number">1</span>]</div><div class="line">];</div><div class="line"><span class="comment">// 入队</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> dd = <span class="number">0</span>; dd &lt; data.length; dd++) &#123;</div><div class="line">    <span class="keyword">var</span> p = <span class="keyword">new</span> Patient(data[dd][<span class="number">0</span>], data[dd][<span class="number">1</span>]);</div><div class="line">    ed.enqueue(p);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'初始数据：'</span> + <span class="built_in">JSON</span>.stringify(ed.dataStore));</div><div class="line"><span class="comment">// 出队</span></div><div class="line"><span class="keyword">var</span> index = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> (!ed.empty()) &#123;</div><div class="line">    <span class="keyword">var</span> seen = ed.dequeue();</div><div class="line">    <span class="comment">// debugger</span></div><div class="line">    data[index++] = seen[<span class="number">0</span>];</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'排序后数据：'</span> + <span class="built_in">JSON</span>.stringify(data));</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/10/数据结构-栈/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1456,7 +1987,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
